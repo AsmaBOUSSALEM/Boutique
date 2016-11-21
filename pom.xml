@@ -39,5 +39,47 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.21</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<version>RELEASE</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>RELEASE</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
+
+	<main.repositories>
+		<repository>
+			<id>spring-releases</id>
+			<name>Spring Releases</name>
+			<url>https://repo.spring.io/libs-release</url>
+		</repository>
+	</main.repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-releases</id>
+			<name>Spring Releases</name>
+			<url>https://repo.spring.io/libs-release</url>
+		</pluginRepository>
+	</pluginRepositories>
 </project>

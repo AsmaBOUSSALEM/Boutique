@@ -1,15 +1,16 @@
 package model.product;
 
 import model.shared.Entity;
-
-import java.util.UUID;
+import org.springframework.data.annotation.Id;
 
 /**
  * Created by asmaboussalem on 15/11/2016.
  */
 public class Product implements Entity<Product>
 {
-    private UUID id;
+    @Id
+    private String id;
+
     private String name;
     private String description;
     private Category productCategory;
@@ -25,7 +26,7 @@ public class Product implements Entity<Product>
         this.quantity = 0;
     }
 
-    public Product(UUID id, String name, String description, Category productCategory, double price, int quantity) {
+    public Product(String id, String name, String description, double price, int quantity) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -34,31 +35,67 @@ public class Product implements Entity<Product>
         this.quantity = quantity;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", productCategory=" + productCategory +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
+    }
+
     public boolean sameIdentityAs(Product other) {
         return false;
     }
 
-    public UUID getId() {
-        return this.id;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
-        return this.name;
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
-        return this.description;
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Category getProductCategory() {
-        return this.productCategory;
+        return productCategory;
+    }
+
+    public void setProductCategory(Category productCategory) {
+        this.productCategory = productCategory;
     }
 
     public double getPrice() {
-        return this.price;
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public int getQuantity() {
-        return this.quantity;
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

@@ -31,6 +31,14 @@ public class ShoppingCart implements Entity<ShoppingCart> {
         return products;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
     public boolean sameIdentityAs(ShoppingCart other) {
         return false;
     }

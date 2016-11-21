@@ -45,6 +45,22 @@ public class Order implements Entity<Order> {
         return this.orderStatus;
     }
 
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
     public boolean sameIdentityAs(Order other) {
         return false;
     }

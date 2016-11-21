@@ -10,6 +10,10 @@
           <target>1.7</target>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
     </plugins>
   </build>
   <parent>
@@ -18,13 +22,11 @@
     <version>0.0.1</version>
   </parent>
   <artifactId>Infra</artifactId>
-
-  <dependencies>
-
-    <dependency>
-      <groupId>com.google.firebase</groupId>
-      <artifactId>firebase-admin</artifactId>
-      <version>4.0.1</version>
-    </dependency>
-  </dependencies>
+<dependencies>
+  <dependency>
+    <groupId>com.alma.boutique</groupId>
+    <artifactId>Domain</artifactId>
+    <version>0.0.1</version>
+  </dependency>
+</dependencies>
 </project>
