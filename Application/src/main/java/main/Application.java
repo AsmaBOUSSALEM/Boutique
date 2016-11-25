@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
-@EnableMongoRepositories(basePackages = "main.repositories")
+@EnableMongoRepositories(basePackages = "com.alma.boutique.api.repositories")
 public class Application{
 
     public static void main(String[] args) {

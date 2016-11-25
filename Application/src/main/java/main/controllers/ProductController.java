@@ -1,6 +1,6 @@
 package main.controllers;
 
-import main.repositories.ProductRepository;
+import com.alma.boutique.api.repositories.ProductRepository;
 import model.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;

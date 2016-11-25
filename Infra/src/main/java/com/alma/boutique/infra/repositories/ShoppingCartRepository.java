@@ -1,4 +1,4 @@
-package repositories;
+package com.alma.boutique.infra.repositories;
 
 import model.shopping_cart.ShoppingCart;
 

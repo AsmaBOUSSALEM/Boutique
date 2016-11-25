@@ -1,9 +1,8 @@
-package repositories;
+package com.alma.boutique.infra.repositories;
 
 import model.order.Order;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -17,6 +16,6 @@ public interface OrderRepository extends MongoRepository<Order, String> {
      * @param id
      * @return Order if found, else {@code null}
      */
-    public Order findById(UUID id);
+    public abstract Order findById(UUID id);
 
 }
