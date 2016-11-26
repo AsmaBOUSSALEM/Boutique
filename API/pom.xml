@@ -17,5 +17,10 @@
 			<artifactId>wsdl4j</artifactId>
 			<version>1.6.3</version>
 		</dependency>
+        <dependency>
+            <groupId>com.alma.boutique</groupId>
+            <artifactId>Infra</artifactId>
+            <version>0.0.1</version>
+        </dependency>
 	</dependencies>
 </project>
