@@ -68,13 +68,13 @@
 		</dependency>
 	</dependencies>
 
-	<main.repositories>
+	<repositories>
 		<repository>
 			<id>spring-releases</id>
 			<name>Spring Releases</name>
 			<url>https://repo.spring.io/libs-release</url>
 		</repository>
-	</main.repositories>
+	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>spring-releases</id>
