@@ -2,7 +2,6 @@ package model.order;
 
 import model.shared.Entity;
 import model.shopping_cart.ShoppingCart;
-import model.user.User;
 
 import java.util.UUID;
 
@@ -11,30 +10,26 @@ import java.util.UUID;
  */
 public class Order implements Entity<Order> {
     private UUID id;
-    private User user;
+    private double totalPrice;
     private ShoppingCart shoppingCart;
     private OrderStatus orderStatus;
 
     public Order() {
         this.id = null;
-        this.user = null;
+        this.totalPrice = 0;
         this.shoppingCart = null;
         this.orderStatus = null;
     }
 
-    public Order(UUID id, User user, ShoppingCart shoppingCart, OrderStatus orderStatus) {
+    public Order(UUID id, double totalPrice, ShoppingCart shoppingCart, OrderStatus orderStatus) {
         this.id = id;
-        this.user = user;
+        this.totalPrice = totalPrice;
         this.shoppingCart = shoppingCart;
         this.orderStatus = orderStatus;
     }
 
     public UUID getId() {
         return this.id;
-    }
-
-    public User getUser() {
-        return this.user;
     }
 
     public ShoppingCart getShoppingCart() {
@@ -49,16 +44,20 @@ public class Order implements Entity<Order> {
         this.id = id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public void setShoppingCart(ShoppingCart shoppingCart) {
         this.shoppingCart = shoppingCart;
     }
 
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public boolean sameIdentityAs(Order other) {

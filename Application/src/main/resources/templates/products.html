@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Products</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <style>
+        body {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="../static/css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}"/>
+    <link rel="stylesheet" href="../static/css/main.css" th:href="@{/css/main.css}"/>
+
+    <script src="../static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js" th:src="@{/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js}"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Boutique</a>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div th:each="product : ${products}" class="col-md-4">
+            <h2 th:text="${product.name}"></h2>
+            <p th:text="${product.description}"></p>
+            <p>
+                <button class="btn btn-default ajax-add-to-cart" href="" th:attr="data-id=${product.id}" role="button">
+                    Add to cart &raquo;
+                </button>
+                    
+                <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#buyProduct">-->
+                <!--Buy product-->
+                <!--</button>-->
+            </p>
+        </div>
+    </div>
+
+</div>
+<!-- /container -->
+
+<!-- Modal -->
+<div class="modal fade" id="buyProduct" tabindex="-1" role="dialog" aria-labelledby="buyProductLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="buyProductLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../static/js/vendor/jquery-1.11.2.min.js" th:src="@{/js/vendor/jquery-1.11.2.min.js}"></script>
+
+<script src="../static/js/vendor/bootstrap.min.js" th:src="@{/js/vendor/bootstrap.min.js}"></script>
+
+<script src="../static/js/main.js" th:src="@{/js/main.js}"></script>
+</body>
+</html>

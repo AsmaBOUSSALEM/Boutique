@@ -2,40 +2,29 @@ package model.shopping_cart;
 
 import model.product.Product;
 import model.shared.Entity;
-import model.user.User;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by asmaboussalem on 16/11/2016.
  */
 public class ShoppingCart implements Entity<ShoppingCart> {
-    User user;
-    List<Product> products;
+    HashMap<Integer, Product> products;
 
     public ShoppingCart() {
-        this.user = null;
-        this.products = null;
+        this.products = new HashMap<Integer, Product>();
     }
 
-    public ShoppingCart(User user, List<Product> products) {
-        this.user = user;
+    public ShoppingCart(HashMap<Integer, Product> products) {
         this.products = products;
     }
 
-    public User getUser() {
-        return this.user;
-    }
-
-    public List<Product> getProducts() {
+    public HashMap<Integer, Product> getProducts() {
         return products;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public void setProducts(List<Product> products) {
+    public void setProducts(HashMap<Integer, Product> products) {
         this.products = products;
     }
 
