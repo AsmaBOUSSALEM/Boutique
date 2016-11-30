@@ -29,14 +29,14 @@ public class ProductRestController {
     public Product getProductById(@PathVariable String id, Model model) {
         return productRepository.findOne(id);
     }
-
-    @RequestMapping("/api/add-to-cart")
-    public int addToCart(@RequestParam(value="id", required= true) String id) {
-        Product product = productRepository.findOne(id);
-        if (shoppingCart == null) {
-            shoppingCart = new ShoppingCart();
-        }
-        shoppingCart.getProducts().put(shoppingCart.getProducts().size() + 1, product);
-        return shoppingCart.getProducts().get(product).;
-    }
+//
+//    @RequestMapping("/api/add-to-cart")
+//    public int addToCart(@RequestParam(value="id", required= true) String id) {
+//        Product product = productRepository.findOne(id);
+//        if (shoppingCart == null) {
+//            shoppingCart = new ShoppingCart();
+//        }
+//        shoppingCart.getProducts().put(shoppingCart.getProducts().size() + 1, product);
+//        return shoppingCart.getProducts().get(product).;
+//    }
 }
