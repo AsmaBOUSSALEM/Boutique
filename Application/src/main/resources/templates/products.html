@@ -26,6 +26,9 @@
             </button>
             <a class="navbar-brand" href="/">Boutique</a>
         </div>
+        <button type="button" id="buyProductsButton" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target="#buyProduct">
+            Buy items in cart
+        </button>
     </div>
 </nav>
 
@@ -36,14 +39,11 @@
         <div th:each="product : ${products}" class="col-md-4">
             <h2 th:text="${product.name}"></h2>
             <p th:text="${product.description}"></p>
+            <p th:text="${product.price}"></p>
             <p>
-                <button class="btn btn-default ajax-add-to-cart" href="" th:attr="data-id=${product.id}" role="button">
+                <button class="btn btn-default ajax-add-to-cart" href="" th:attr="data-id=${product.id}" data-ordered-number="0" role="button">
                     Add to cart &raquo;
                 </button>
-                    
-                <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#buyProduct">-->
-                <!--Buy product-->
-                <!--</button>-->
             </p>
         </div>
     </div>
@@ -60,11 +60,19 @@
                 <h4 class="modal-title" id="buyProductLabel">Modal title</h4>
             </div>
             <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <form id="creditCardValidation">
+                    <div class="form-group">
+                        <label for="cartType">Card type :</label>
+                        <input type="text" class="form-control" id="cartType" name="type" placeholder="Cart type"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="cartNumber">Cart number :</label>
+                        <input type="text" class="form-control" id="cartNumber" name="number" placeholder="Cart number"/>
+                    </div>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <em id="total-price"></em>
             </div>
         </div>
     </div>

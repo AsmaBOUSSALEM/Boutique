@@ -1,51 +1,47 @@
 package model.order;
 
+import model.product.Product;
 import model.shared.Entity;
-import model.shopping_cart.ShoppingCart;
+import org.springframework.data.annotation.Id;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
  * Created by asmaboussalem on 16/11/2016.
  */
 public class Order implements Entity<Order> {
-    private UUID id;
+    @Id
+    private String id;
     private double totalPrice;
-    private ShoppingCart shoppingCart;
+    private List<Product> products;
     private OrderStatus orderStatus;
 
     public Order() {
         this.id = null;
         this.totalPrice = 0;
-        this.shoppingCart = null;
+        this.products = new ArrayList<Product>();
         this.orderStatus = null;
     }
 
-    public Order(UUID id, double totalPrice, ShoppingCart shoppingCart, OrderStatus orderStatus) {
+    public Order(String id, double totalPrice, List<Product> products, OrderStatus orderStatus) {
         this.id = id;
         this.totalPrice = totalPrice;
-        this.shoppingCart = shoppingCart;
+        this.products = products;
         this.orderStatus = orderStatus;
     }
 
-    public UUID getId() {
+    public String getId() {
         return this.id;
-    }
-
-    public ShoppingCart getShoppingCart() {
-        return this.shoppingCart;
     }
 
     public OrderStatus getOrderStatus() {
         return this.orderStatus;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
-    }
-
-    public void setShoppingCart(ShoppingCart shoppingCart) {
-        this.shoppingCart = shoppingCart;
     }
 
     public void setOrderStatus(OrderStatus orderStatus) {
@@ -58,6 +54,14 @@ public class Order implements Entity<Order> {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     public boolean sameIdentityAs(Order other) {

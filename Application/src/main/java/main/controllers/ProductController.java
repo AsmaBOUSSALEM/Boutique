@@ -1,9 +1,7 @@
 package main.controllers;
 
 import com.alma.boutique.api.repositories.ProductRepository;
-import model.order.Order;
 import model.product.Product;
-import model.shopping_cart.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;

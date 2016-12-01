@@ -1,7 +1,9 @@
 package main.controllers;
 
 import com.alma.boutique.api.repositories.OrderRepository;
+import com.alma.boutique.api.repositories.ProductRepository;
 import model.order.Order;
+import model.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +16,9 @@ import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by asmaboussalem on 25/11/2016.
@@ -23,6 +27,8 @@ import java.util.List;
 public class OrderController {
     @Autowired
     OrderRepository orderRepository;
+    @Autowired
+    ProductRepository productRepository;
 
     @RequestMapping("/orders")
     public List<Order> getAllproducts(Model model) {
@@ -34,8 +40,23 @@ public class OrderController {
         return orderRepository.findOne(id);
     }
 
+    @RequestMapping("/submit-order")
+    public String submitOrder(@RequestParam(value="products", required = true) String[] products)
+    {
+        Order order = new Order();
+        List<Product> productsList = new ArrayList<>();
+        double totalPrice = 0;
+        for (int i = 0; i < products.length; i++) {
+            productsList.add(productRepository.findOne(products[i]));
+            totalPrice += productsList.get(i).getPrice();
+        }
+        order.setProducts(productsList);
+        order.setTotalPrice(totalPrice);
+        return "order Created successfully";
+    }
     @RequestMapping("/validate-credit-card")
-    public String validateCreditCard(@RequestParam(value="type", required=true) String type, @RequestParam(value="number", required=true) String number)
+    public boolean validateCreditCard(@RequestParam(value="type", required=true) String type,
+                                      @RequestParam(value="number", required=true) String number)
     {
         try {
             // Create SOAP Connection
@@ -46,15 +67,15 @@ public class OrderController {
             String url = "http://www.webservicex.net/CreditCard.asmx?WSDL";
             SOAPMessage soapResponse = soapConnection.call(createSOAPRequest(type, number), url);
 
-            // Process the SOAP Response
-            printSOAPResponse(soapResponse);
-
             soapConnection.close();
+            if (soapResponse == null) {
+                return true;
+            }
+
         } catch (Exception e) {
-            System.err.println("Error occurred while sending SOAP Request to Server");
             e.printStackTrace();
         }
-        return "";
+        return false;
     }
 
     private SOAPMessage createSOAPRequest(String type, String number) throws Exception {
@@ -93,24 +114,7 @@ public class OrderController {
 
         soapMessage.saveChanges();
 
-        /* Print the request message */
-        System.out.print("Request SOAP Message = ");
-        soapMessage.writeTo(System.out);
-        System.out.println();
-
         return soapMessage;
-    }
-
-    /**
-     * Method used to print the SOAP Response
-     */
-    private void printSOAPResponse(SOAPMessage soapResponse) throws Exception {
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        Source sourceContent = soapResponse.getSOAPPart().getContent();
-        System.out.print("\nResponse SOAP Message = ");
-        StreamResult result = new StreamResult(System.out);
-        transformer.transform(sourceContent, result);
     }
 
 }
