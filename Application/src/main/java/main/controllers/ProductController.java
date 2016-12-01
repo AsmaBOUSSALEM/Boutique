@@ -47,4 +47,16 @@ public class ProductController {
         return "products";
     }
 
+
+
+    @RequestMapping("/")
+    public String init(){
+        return "welcome to boutique";
+    }
+
+
+
+
+
+
 }
