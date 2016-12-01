@@ -11,9 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by asmaboussalem on 26/11/2016.
@@ -37,14 +37,14 @@ public class ProductController {
     }
 
     @RequestMapping("/import-products")
-    public String importProducts(Model model) {
+    public ModelAndView importProducts(Model model) {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<ArrayList<Product>> productResponse = restTemplate.exchange("http://localhost:8080/api/products",
                 HttpMethod.GET, null, new ParameterizedTypeReference<ArrayList<Product>>() {
                 });
         ArrayList<Product> products = productResponse.getBody();
         productRepository.save(products);
-        return "products";
+        return new ModelAndView("redirect:/products");
     }
 
 }
