@@ -35,7 +35,11 @@ $("#creditCardValidation").submit(function(e){
         method: "POST",
         url: "/submit-order?products=" + products,
         success: function (data) {
-
+            $('nav').after(
+                '<div class="alert alert-success alert-dismissible" role="alert">' +
+                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                '<p>'+ data + '</p>' +
+                '</div>');
             $.ajax({
                 method: "POST",
                 url: "/validate-credit-card?" + dataForm,
