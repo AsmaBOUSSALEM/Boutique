@@ -41,14 +41,4 @@ public class ProductRestController {
         return totalPrice;
     }
 
-//
-//    @RequestMapping("/api/add-to-cart")
-//    public int addToCart(@RequestParam(value="id", required= true) String id) {
-//        Product product = productRepository.findOne(id);
-//        if (shoppingCart == null) {
-//            shoppingCart = new ShoppingCart();
-//        }
-//        shoppingCart.getProducts().put(shoppingCart.getProducts().size() + 1, product);
-//        return shoppingCart.getProducts().get(product).;
-//    }
 }

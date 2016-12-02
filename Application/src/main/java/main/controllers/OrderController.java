@@ -23,24 +23,45 @@ import java.util.UUID;
 
 /**
  * Created by asmaboussalem on 25/11/2016.
+ * Order Rest controller
  */
 @RestController
 public class OrderController {
+    /**
+     * Autowired variable orderRepository
+     */
     @Autowired
     OrderRepository orderRepository;
+    /**
+     * Autowired variable orderRepository
+     */
     @Autowired
     ProductRepository productRepository;
 
+    /**
+     * get all orders
+     * @return List if found, else {@code null}
+     */
     @RequestMapping("/orders")
     public List<Order> getAllproducts(Model model) {
         return orderRepository.findAll();
     }
 
+    /**
+     * get order by id
+     * @param id
+     * @return Order if found, else {@code null}
+     */
     @RequestMapping("/orders/{id}")
     public Order getProductById(@PathVariable String id, Model model) {
         return orderRepository.findOne(id);
     }
 
+    /**
+     * submit ordered list of products
+     * @param products
+     * @return String
+     */
     @RequestMapping("/submit-order")
     public String submitOrder(@RequestParam(value="products", required = true) String[] products)
     {
@@ -55,6 +76,13 @@ public class OrderController {
         order.setTotalPrice(totalPrice);
         return "order Created successfully";
     }
+
+    /**
+     * validate type and credit card number
+     * @param type
+     * @param number
+     * @return boolean
+     */
     @RequestMapping("/validate-credit-card")
     public boolean validateCreditCard(@RequestParam(value="type", required=true) String type,
                                       @RequestParam(value="number", required=true) String number)

@@ -36,6 +36,9 @@ public class ProductController {
         return "products";
     }
 
+    /**
+     * import products from supplier
+     */
     @RequestMapping("/import-products")
     public ModelAndView importProducts(Model model) {
         RestTemplate restTemplate = new RestTemplate();

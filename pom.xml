@@ -19,6 +19,24 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<!--<sonar.sources>src/main/java</sonar.sources>-->
+					<sonar.exclusions>file:**/Application/src/main/test/**/*_.*</sonar.exclusions>
+					<sonar.exclusions>file:**/API/src/main/test/**/*_.*</sonar.exclusions>
+					<sonar.exclusions>file:**/Presentation/src/main/test/**/*_.*</sonar.exclusions>
+					<sonar.exclusions>file:**/Domain/src/main/test/**/*_.*</sonar.exclusions>
+					<sonar.exclusions>file:**/Infra/src/main/test/**/*_.*</sonar.exclusions>
+					<sonar.exclusions>file:**/**/target/**/*_.*</sonar.exclusions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
     <dependencies>
 		<dependency>

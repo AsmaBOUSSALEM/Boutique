@@ -6,6 +6,12 @@ import javax.xml.soap.*;
  * Created by asmaboussalem on 01/12/2016.
  */
 public class ValidateCreditCardSOAP {
+    /**
+     * soap call of external web service
+     * @param type
+     * @param number
+     * @return boolean
+     */
     public boolean validateCreditCardSOAP(String type, String number)
     {
         try {
