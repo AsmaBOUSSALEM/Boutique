@@ -1,0 +1,9 @@
+com.alma.boutique.api.repositories
+com.alma.boutique.api.services
+com.alma.boutique.infra.repositories
+com.alma.boutique.infra.services
+main
+main.controllers
+model.order
+model.product
+model.shared
